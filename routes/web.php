@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/program-studi', \App\Http\Controllers\ProgramStudiController::class);
+Route::resource('/fakultas', \App\Http\Controllers\FakultasController::class)->parameters(['fakultas' => 'fakultas']);
+Route::get('/sekolah', [App\Http\Controllers\SekolahController::class,'index']);
+Route::get('/fetch-sekolah', [App\Http\Controllers\SekolahController::class,'fetchSekolah']);
